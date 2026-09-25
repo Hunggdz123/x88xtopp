@@ -11,6 +11,91 @@
             min-height: 100vh;
             overflow-x: hidden;
             width: 100%;
+            background: #020b1b;
+        }
+
+        .promo-strip {
+            position: relative;
+            z-index: 20;
+            width: min(1260px, calc(100% - 20px));
+            margin: 18px auto 0;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            align-items: center;
+            justify-items: center;
+            gap: 18px;
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .promo-pill {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 260px;
+            min-width: 0;
+            padding: 12px 26px;
+            border-radius: 26px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: clamp(0.8rem, 1vw, 1.35rem);
+            letter-spacing: 0.5px;
+            background: linear-gradient(180deg, #1a7de8, #0b49a4);
+            border: 3px solid rgba(255,255,255,0.18);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 8px 18px rgba(9, 48, 110, 0.4);
+            white-space: nowrap;
+            transition: transform 0.2s ease, filter 0.2s ease;
+            animation: pulseButton 1.8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseButton {
+            0% {
+                box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 8px 18px rgba(9, 48, 110, 0.35), 0 0 0 rgba(38, 143, 255, 0);
+                filter: brightness(1);
+                opacity: 0.85;
+                transform: scale(1);
+            }
+            35% {
+                box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 8px 18px rgba(9, 48, 110, 0.5), 0 0 16px rgba(42, 162, 255, 0.55);
+                filter: brightness(1.12);
+                opacity: 1;
+                transform: scale(1.02);
+            }
+            100% {
+                box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 8px 18px rgba(9, 48, 110, 0.5), 0 0 18px rgba(42, 162, 255, 0.6);
+                filter: brightness(1.08);
+                opacity: 0.9;
+                transform: scale(0.995);
+            }
+        }
+
+        .promo-pill:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+
+        .top-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            line-height: 0;
+            flex-shrink: 0;
+        }
+
+        .top-logo img {
+            width: 300px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            max-width: 100%;
+            transform: translateY(2px);
         }
 
         /* Video nền + Overlay */
@@ -40,21 +125,16 @@
 
         /* Logo trên cùng */
         .top-logo {
-            width: 100%;
+            width: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             padding: 0;
             margin: 0;
             background: transparent;
             z-index: 10;
             position: relative;
-        }
-        .top-logo img {
-            width: 450px;
-            height: auto;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto;
-            max-width: 95%;
         }
 
         .container { 
@@ -193,9 +273,12 @@
 
         /* Nút */
         .btn-experience {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: min(100%, 250px);
             margin-top: 20px;
-            padding: 14px 32px;
+            padding: 14px 20px;
             background: linear-gradient(90deg, #ffd700, #ffaa00);
             color: #1a0033;
             font-weight: bold;
@@ -205,13 +288,11 @@
             transition: all 0.3s ease;
             box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
             min-height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             border: none;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
+            text-align: center;
         }
         .btn-experience:hover {
             transform: translateY(-3px);
